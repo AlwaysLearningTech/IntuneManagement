@@ -214,7 +214,7 @@ function Import-DeviceConfiguration
 
     Write-Status "Import $($obj.displayName)"
 
-    Invoke-GraphRequest -Url "/deviceManagement/deviceConfigurations" -Content (ConvertTo-Json $obj -Depth 5) -HttpMethod POST        
+    Invoke-GraphRequest -Url "/deviceManagement/deviceConfigurations" -Content (ConvertTo-Json ($obj | Select-Object -Property * -ExcludeProperty createdDateTime, lastModifiedDateTime) -Depth 5) -HttpMethod POST        
 }
 
 function Import-AllDeviceConfigurationObjects

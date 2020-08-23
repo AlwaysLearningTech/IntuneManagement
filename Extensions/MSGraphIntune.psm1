@@ -1515,6 +1515,7 @@ function Import-GraphAssignments
     $targets = ""
     $assignments | ForEach-Object { 
         Remove-ObjectProperty $PSItem "Id"
+        Remove-ObjectProperty $PSItem "lastModifiedDateTime"
         if($assignmentObjectType)
         {
             $PSItem | Add-Member -MemberType NoteProperty -Name "@odata.type" -Value $assignmentObjectType 
